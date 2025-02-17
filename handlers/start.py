@@ -6,8 +6,10 @@ async def start_command(message: types.Message):
         [types.InlineKeyboardButton(text="Наш адрес", callback_data="adress")],
         [types.InlineKeyboardButton(text="Режим работы", callback_data="hours")],
         [types.InlineKeyboardButton(text="Наш сайт", url="https://geeks.kg")],
-        [types.InlineKeyboardButton(text="Инстаграм", url="https://geeks.kg")]]
-    )
+        [types.InlineKeyboardButton(text="Инстаграм", url="https://geeks.kg")],
+        [types.InlineKeyboardButton(text="Оставить отзыв", callback_data="review")]
+
+    ])
 
     await message.answer(f"Hello , {user.first_name}", reply_markup=kb)
 async def about_us_handler(callback: CallbackQuery):

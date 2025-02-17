@@ -1,6 +1,6 @@
 import asyncio
 from bot_config import dp
-from handlers import (myinfo, random, start,adress,hours)
+from handlers import (myinfo, random, start,adress,hours,review_dialog)
 
 async def main():
     start.register_handler(dp)
@@ -8,6 +8,8 @@ async def main():
     myinfo.register_handler(dp)
     adress.register_handler(dp)
     hours.register_handler(dp)
+    review_dialog.register_handler(dp)
+
     await dp.start_polling()
 
 
