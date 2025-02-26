@@ -1,6 +1,6 @@
 import asyncio
 from bot_config import dp, database
-from handlers import (myinfo, random, start,adress,hours,review_dialog)
+from handlers import (myinfo, random, start,adress,hours,review_dialog,FSM_store)
 
 async def main():
     start.register_handler(dp)
@@ -9,6 +9,7 @@ async def main():
     adress.register_handler(dp)
     hours.register_handler(dp)
     review_dialog.register_handler(dp)
+    FMS_store.register_handler(dp)
     database.create_tables()
     await dp.start_polling()
 

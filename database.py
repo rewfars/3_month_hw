@@ -1,6 +1,7 @@
 import sqlite3
+
 class Database:
-    def __init__(self, path):
+    def init(self, path):
         self.path = path
 
     def create_tables(self):
@@ -14,16 +15,25 @@ class Database:
                     rate INTEGER,
                     extra_comments TEXT
                 )        
+                )
+            """),
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS store(
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name_product TEXT,
+                    size TEXT,
+                    category TEXT,
+                    price INTEGER,
+                    photo TEXT,
+                    product_id INTEGER
+                )
+            """),
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS product_deatil(
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    product_id INTEGER,
+                    category TEXT,
+                    infoproduct TEXT
+                )
             """)
-            conn.commit()
-    def add_reviews(self, data: dict):
-        print(data)
-        with sqlite3.connect(self.path) as conn:
-            cursor = conn.cursor()
-            cursor.execute(
-                """
-                INSERT INTO reviews (name, phone_number, rate ,extra_comments) VALUES (?, ?, ?, ?)
-            """,
-                (data["name"],data["phone_number"] ,data["rate"], data["extra_comments"]),
-            )
             conn.commit()
